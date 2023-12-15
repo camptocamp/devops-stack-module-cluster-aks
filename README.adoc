@@ -2,7 +2,7 @@
 
 A https://devops-stack.io[DevOps Stack] module to deploy a Kubernetes cluster on Azure AKS.
 
-This module uses the https://registry.terraform.io/modules/terraform-azurerm/aks/azurerm/latest[Terraform module "aks" by Azure] to in order to deploy and manage an AKS cluster. This module was created in order to also manage other resources required by the DevOps Stack, such as the DNS records, resource group and subnet specific to the cluster created (these resources are helpful for the blue/green upgrading strategy). The module also provides the necessary outputs to be used by the other DevOps Stack modules.
+This module uses the https://registry.terraform.io/modules/terraform-azurerm/aks/azurerm/latest[Terraform module "aks" by Azure] to in order to deploy and manage an AKS cluster. It was created in order to also manage other resources required by the DevOps Stack, such as the DNS records, resource group and subnet specific to the cluster created (these resources are helpful for the blue/green upgrading strategy). The module also provides the necessary outputs to be used by the other DevOps Stack modules.
 
 By default, this module creates the AKS control plane and a default node pool composed of 3 nodes of the type `Standard_D2s_v3`. If no version is specified, the AKS cluster and node pool will be created with the latest available version.
 
