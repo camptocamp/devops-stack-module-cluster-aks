@@ -2,7 +2,7 @@
 
 A https://devops-stack.io[DevOps Stack] module to deploy a Kubernetes cluster on Azure AKS.
 
-This module uses the Terraform https://registry.terraform.io/modules/terraform-azurerm/aks/azurerm/latest[module "aks" by Azure] to manage the cluster itself. This module was created in order to also manage other resources required by the DevOps Stack, such as the DNS records, resource group and subnet specific to the cluster created (these resources are helpful for the blue/green upgrading strategy). The module also provides the necessary outputs to be used by the other DevOps Stack modules.
+This module uses the https://registry.terraform.io/modules/terraform-azurerm/aks/azurerm/latest[Terraform module "aks" by Azure] to in order to deploy and manage an AKS cluster. This module was created in order to also manage other resources required by the DevOps Stack, such as the DNS records, resource group and subnet specific to the cluster created (these resources are helpful for the blue/green upgrading strategy). The module also provides the necessary outputs to be used by the other DevOps Stack modules.
 
 By default, this module creates the AKS control plane and a default node pool composed of 3 nodes of the type `Standard_D2s_v3`. If no version is specified, the AKS cluster and node pool will be created with the latest available version.
 
@@ -77,9 +77,9 @@ module "aks" {
 
 === Upgrading the Kubernetes cluster
 
-From our experience, usually, enabling the auto-upgrades is a good practice, but up to a point. We recommend enabling the auto-upgrades for the control plane and the node pools, but only for the patch versions. This will ensure that the cluster is always up to date with the latest security patches, but will not upgrade the cluster to a newer minor version, which could potentially break your applications.
+From our experience, usually, enabling the auto-upgrades is a good practice, but up to a point. We recommend enabling the auto-upgrades for the control plane and the node pools.
 
-To upgrade between minor versions, you are required first yup upgrade the control plane and then the node pools. This is because the node pools cannot be of a higher version than the control plane.
+To upgrade between minor versions, you are required to first upgrade the control plane and then the node pools. This is because the node pools cannot be of a higher version than the control plane.
 
 [WARNING]
 ====
@@ -87,6 +87,8 @@ If using the `orchestrator_version` variable for the default or extra node pools
 
 This is why we recommend leaving the `orchestrator_version` variables as `null` and follow the procedure below.
 ====
+
+Our recommended procedure for upgrading the cluster is as follows:
 
 1. Ensure that the `orchestrator_version` is not set in any part of your code.
 
