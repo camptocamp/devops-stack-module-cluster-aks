@@ -95,6 +95,12 @@ variable "virtual_network_name" {
   type        = string
 }
 
+variable "virtual_network_resource_group_name" {
+  description = "The name of the resource group where the virtual network resides."
+  type        = string
+  default     = null
+}
+
 variable "cluster_subnet" {
   description = "The subnet CIDR where to deploy the cluster, included in the virtual network created."
   type        = string
