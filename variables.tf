@@ -145,7 +145,7 @@ variable "agents_labels" {
 variable "agents_size" {
   description = "The default virtual machine size for the Kubernetes agents. Changing this without specifying `var.temporary_name_for_rotation` forces a new resource to be created. " # TODO Add link to documentation to get available sizes
   type        = string
-  default     = "Standard_D2s_v3"
+  default     = "Standard_D4s_v3"
 }
 
 variable "agents_count" {
