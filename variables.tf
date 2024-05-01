@@ -49,7 +49,7 @@ variable "sku_tier" {
 variable "kubernetes_version" {
   description = "The Kubernetes version to use on the control-plane."
   type        = string
-  default     = "1.28"
+  default     = "1.29"
 }
 
 variable "automatic_channel_upgrade" {
